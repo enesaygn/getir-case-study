@@ -1,0 +1,277 @@
+{
+	"info": {
+		"_postman_id": "fd7715d8-6405-412f-ab7b-54cd14d5e04b",
+		"name": "Getir-Cases",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost",
+			"item": [
+				{
+					"name": "inmemoryget",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlX21haWwiOiJlbmVzLmF5Z3VuQGRpYXRpY3MuY29tIiwiZW1wbG95ZWVfaWQiOjMxODU4MiwiZXhwIjoxNzA3NDk0OTQyLCJmdWxsX25hbWUiOiJFbmVzIEF5Z8O8biIsInNpY2lsX25vIjoiNTI1MjY1In0.JLV_CfNfV0fm8fUzDeZQJ1IyY78TyL16zEnI72wx7v8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8080/inmemoryget?key=active-tabs",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8080",
+							"path": [
+								"inmemoryget"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "active-tabs"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "mongofetch",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlX21haWwiOiJlbmVzLmF5Z3VuQGRpYXRpY3MuY29tIiwiZW1wbG95ZWVfaWQiOjMxODU4MiwiZXhwIjoxNzA3NDk0OTQyLCJmdWxsX25hbWUiOiJFbmVzIEF5Z8O8biIsInNpY2lsX25vIjoiNTI1MjY1In0.JLV_CfNfV0fm8fUzDeZQJ1IyY78TyL16zEnI72wx7v8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"startDate\": \"2016-01-01\",\n    \"endDate\": \"2020-01-01\",\n    \"minCount\": 2700,\n    \"maxCount\": 3000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://0.0.0.00:8080/mongofetch",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"00"
+							],
+							"port": "8080",
+							"path": [
+								"mongofetch"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "inmemoryset",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlX21haWwiOiJlbmVzLmF5Z3VuQGRpYXRpY3MuY29tIiwiZW1wbG95ZWVfaWQiOjMxODU4MiwiZXhwIjoxNzA3NDk0OTQyLCJmdWxsX25hbWUiOiJFbmVzIEF5Z8O8biIsInNpY2lsX25vIjoiNTI1MjY1In0.JLV_CfNfV0fm8fUzDeZQJ1IyY78TyL16zEnI72wx7v8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"key\": \"active-tabs\",\n    \"value\": \"getir\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://0.0.0.00:8080/inmemoryset",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"00"
+							],
+							"port": "8080",
+							"path": [
+								"inmemoryset"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "heroku",
+			"item": [
+				{
+					"name": "inmemoryget",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlX21haWwiOiJlbmVzLmF5Z3VuQGRpYXRpY3MuY29tIiwiZW1wbG95ZWVfaWQiOjMxODU4MiwiZXhwIjoxNzA3NDk0OTQyLCJmdWxsX25hbWUiOiJFbmVzIEF5Z8O8biIsInNpY2lsX25vIjoiNTI1MjY1In0.JLV_CfNfV0fm8fUzDeZQJ1IyY78TyL16zEnI72wx7v8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://immense-anchorage-73013-52cdced819ec.herokuapp.com/inmemoryget?key=active-tabs",
+							"protocol": "https",
+							"host": [
+								"immense-anchorage-73013-52cdced819ec",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"inmemoryget"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "active-tabs"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "mongofetch",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlX21haWwiOiJlbmVzLmF5Z3VuQGRpYXRpY3MuY29tIiwiZW1wbG95ZWVfaWQiOjMxODU4MiwiZXhwIjoxNzA3NDk0OTQyLCJmdWxsX25hbWUiOiJFbmVzIEF5Z8O8biIsInNpY2lsX25vIjoiNTI1MjY1In0.JLV_CfNfV0fm8fUzDeZQJ1IyY78TyL16zEnI72wx7v8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"startDate\": \"2016-01-01\",\n    \"endDate\": \"2020-01-01\",\n    \"minCount\": 2700,\n    \"maxCount\": 3000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://immense-anchorage-73013-52cdced819ec.herokuapp.com/mongofetch",
+							"protocol": "https",
+							"host": [
+								"immense-anchorage-73013-52cdced819ec",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"mongofetch"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "inmemoryset",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlX21haWwiOiJlbmVzLmF5Z3VuQGRpYXRpY3MuY29tIiwiZW1wbG95ZWVfaWQiOjMxODU4MiwiZXhwIjoxNzA3NDk0OTQyLCJmdWxsX25hbWUiOiJFbmVzIEF5Z8O8biIsInNpY2lsX25vIjoiNTI1MjY1In0.JLV_CfNfV0fm8fUzDeZQJ1IyY78TyL16zEnI72wx7v8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"key\": \"active-tabs\",\n    \"value\": \"getir\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://immense-anchorage-73013-52cdced819ec.herokuapp.com/inmemoryset",
+							"protocol": "https",
+							"host": [
+								"immense-anchorage-73013-52cdced819ec",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"inmemoryset"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

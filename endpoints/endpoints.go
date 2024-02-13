@@ -52,13 +52,18 @@ type getHandlerResponseBody struct {
 
 // getHandler handles GET requests to the root URL
 func InMemoryGetHandler(w http.ResponseWriter, r *http.Request) {
-	// Check the request method
-	if r.Method != http.MethodGet {
-		// Respond with a method not allowed error for other request methods
-		http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
-	}
 
 	w.Header().Set("Content-Type", "text/plain")
+
+	// Check the request method
+	if r.Method != http.MethodGet {
+		log.Println(r.RequestURI, " ", "Method Not Allowed")
+		// Respond with a method not allowed error for other request methods
+		http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
+		return
+	}
+
+	// Get the query parameters from the request
 	queryParams := r.URL.Query()
 
 	// Retrieve specific parameter values
@@ -85,18 +90,23 @@ func InMemoryGetHandler(w http.ResponseWriter, r *http.Request) {
 
 // setHandler handles POST requests to the /inmemoryset URL
 func InMemorySetHandler(w http.ResponseWriter, r *http.Request) {
-	// Check the request method
-	if r.Method != http.MethodPost {
-		// Respond with a method not allowed error for other request methods
-		http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
-	}
 
 	w.Header().Set("Content-Type", "application/json")
 
-	req := SetHandlerRequestBody{}
-	res := setHandlerResponseBody{}
+	// Check the request method
+	if r.Method != http.MethodPost {
+		log.Println(r.RequestURI, " ", "Method Not Allowed")
+		// Respond with a method not allowed error for other request methods
+		http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
+		return
+	}
+
+	// Create a new instance of the in-memory database
 	inMemoryInstance := db.GetInMemoryDBInstance()
 
+	// Decode the request body
+	req := SetHandlerRequestBody{}
+	res := setHandlerResponseBody{}
 	err := json.NewDecoder(r.Body).Decode(&req)
 	if err != nil {
 		fmt.Fprintf(w, err.Error())
@@ -104,44 +114,51 @@ func InMemorySetHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	inMemoryInstance.Set(req.Key, req.Value)
+
 	responseSetBody(req.Key, req.Value, w, res)
 
 }
 
 // MongoHandler handles POST requests to the /mongofetch URL
 func MongoHandler(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+
 	if r.Method != http.MethodPost {
+		log.Println(r.RequestURI, " ", "Method Not Allowed")
 		// Respond with a method not allowed error for other request methods
 		http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
 	}
-
-	w.Header().Set("Content-Type", "application/json")
 
 	req := MongoHandlerRequestBody{}
 	res := mongoHandlerResponseBody{}
 
 	err := json.NewDecoder(r.Body).Decode(&req)
 	if err != nil {
-		responseBody(err.Error(), 1, w, res)
+		log.Println("MongoHandler Decode Error: ", err.Error())
+		responseMongoBody(err.Error(), 1, w, res)
 		return
 	}
+
+	defer r.Body.Close()
 
 	layout := "2006-01-02"
 
 	startDate, err := time.Parse(layout, req.StartDate)
 	if err != nil {
-		responseBody(err.Error(), 1, w, res)
+		log.Println("MongoHandler startDate Parse Error: ", err.Error())
+		responseMongoBody(err.Error(), 1, w, res)
 		return
 	}
 	endDate, err := time.Parse(layout, req.EndDate)
 	if err != nil {
-		responseBody(err.Error(), 1, w, res)
+		log.Println("MongoHandler endDate Parse Error: ", err.Error())
+		responseMongoBody(err.Error(), 1, w, res)
 		return
 	}
 
+	// Access collection
 	collection := db.Connection.Collection("records")
 
-	// Sorgu için filtre oluşturma
 	matchedCreatedAt := bson.D{
 		{Key: "$match", Value: bson.D{
 			{Key: "createdAt", Value: bson.D{
@@ -203,11 +220,11 @@ func MongoHandler(w http.ResponseWriter, r *http.Request) {
 
 	}
 
-	responseBody("Success", 0, w, res)
+	responseMongoBody("Success", 0, w, res)
 
 }
 
-func responseBody(message string, code int, w http.ResponseWriter, res mongoHandlerResponseBody) {
+func responseMongoBody(message string, code int, w http.ResponseWriter, res mongoHandlerResponseBody) {
 	res.Code = code
 	res.Message = message
 	json.NewEncoder(w).Encode(res)

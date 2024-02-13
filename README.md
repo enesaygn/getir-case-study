@@ -1,5 +1,45 @@
 # Getir-Case
 
+## Usage
+
+## Usage
+
+### Running on Heroku
+
+To access the deployed application on Heroku, click [here](https://immense-anchorage-73013-52cdced819ec.herokuapp.com/).
+
+### Running Locally
+
+To run the application on your local machine, follow these steps (applicable for Mac):
+
+1. Navigate to the root directory of the project in your terminal.
+
+2. Set the port:
+    ```
+    export PORT=8080
+    ```
+
+3. Run the application:
+    ```
+    go run main.go
+    ```
+
+4. Access the application by visiting `http://localhost:8080` in your browser or using an HTTP client.
+
+### Testing
+
+To run tests for the application, follow these steps:
+
+1. Navigate to the root directory of the project in your terminal.
+
+2. Run tests for all packages:
+    ```
+    go test -v ./...
+    ```
+
+By following these steps, you can successfully run and test the application on Heroku or your local machine.
+
+
 ## Fetch Data from MongoDB
 
 ### Request Payload
