@@ -28,14 +28,15 @@ The request payload of the first endpoint includes a JSON object with the follow
 
 The response payload of the first endpoint has the following structure:
 
-"code" (number): Status code. 0 indicates success.
-"msg" (string): Description of the code. Set to "success" for successful requests.
-"records" (array): Array of objects containing filtered items.
+- `"code"` (number): Status code. 0 indicates success.
+- `"msg"` (string): Description of the code. Set to "success" for successful requests.
+- `"records"` (array): Array of objects containing filtered items.
+
 Each object in the "records" array has the following fields:
 
-"key" (string): Key value.
-"createdAt" (string): Date and time of creation in ISO 8601 format.
-"totalCount" (number): Sum of the "counts" array in the document.
+- `"key"` (string): Key value.
+- `"createdAt"` (string): Date and time of creation in ISO 8601 format.
+- `"totalCount"` (number): Sum of the "counts" array in the document.
 
 ### Sample Response Payload
 
@@ -66,8 +67,8 @@ Each object in the "records" array has the following fields:
 
 The request payload of the POST endpoint includes a JSON object with the following fields:
 
-"key" (string): Key value.
-"value" (string): Value associated with the key.
+- `"key"` (string): Key value.
+- `"value"` (string): Value associated with the key.
 
 ### Sample Request Payload
 ```json
@@ -87,7 +88,7 @@ The response payload of the POST endpoint returns an echo of the request or an e
 
 The request payload of the GET endpoint includes a query parameter:
 
-"key" (string): Key value.
+- `"key"` (string): Key value.
 
 ### Sample Request
 
@@ -97,8 +98,8 @@ GET http://localhost:8080/in-memory?key=active-tabs
 
 The response payload of the GET endpoint returns a JSON object with the following fields:
 
-"key" (string): Key value.
-"value" (string): Value associated with the key.
+- `"key"` (string): Key value.
+- `"value"` (string): Value associated with the key.
 
 ### Sample Response Payload
 ```json
