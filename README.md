@@ -1,4 +1,6 @@
-## First Endpoint - Fetch Data from MongoDB
+# Getir-Case
+
+## Fetch Data from MongoDB
 
 ### Request
 
