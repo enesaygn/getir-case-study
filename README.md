@@ -2,8 +2,6 @@
 
 ## Usage
 
-## Usage
-
 ### Running on Heroku
 
 To access the deployed application on Heroku, click [here](https://immense-anchorage-73013-52cdced819ec.herokuapp.com/).
