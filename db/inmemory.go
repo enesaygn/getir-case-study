@@ -4,23 +4,24 @@ import (
 	"sync"
 )
 
+// InMemoryDB is a simple in-memory key-value store
 var (
 	inMemoryInstance *InMemoryDB
-	once             sync.Once
+	onceI            sync.Once
 )
-
-// GetInMemoryDBInstance returns a singleton instance of InMemoryDB
-func GetInMemoryDBInstance() *InMemoryDB {
-	once.Do(func() {
-		inMemoryInstance = NewInMemoryDB()
-	})
-	return inMemoryInstance
-}
 
 // InMemoryDB is a simple in-memory key-value store
 type InMemoryDB struct {
 	data map[string]string
 	mu   sync.RWMutex
+}
+
+// GetInMemoryDBInstance returns a singleton instance of InMemoryDB
+func GetInMemoryDBInstance() *InMemoryDB {
+	onceI.Do(func() {
+		inMemoryInstance = NewInMemoryDB()
+	})
+	return inMemoryInstance
 }
 
 // NewInMemoryDB creates a new instance of InMemoryDB
@@ -43,11 +44,4 @@ func (db *InMemoryDB) Get(key string) (string, bool) {
 	defer db.mu.RUnlock()
 	val, ok := db.data[key]
 	return val, ok
-}
-
-// Delete deletes the entry for the given key from the in-memory database
-func (db *InMemoryDB) Delete(key string) {
-	db.mu.Lock()
-	defer db.mu.Unlock()
-	delete(db.data, key)
 }

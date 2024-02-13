@@ -3,21 +3,41 @@ package main
 import (
 	db "getir-case/db"
 	endpoints "getir-case/endpoints"
+	"log"
 	"net/http"
+	"os"
+
+	"github.com/pkg/errors"
 )
 
 func main() {
 
 	// Initialize the in-memory database
-	db.InitializeMongoDb()
+	err := db.InitializeMongoDB()
+	if err != nil {
+		log.Println("Error initializing the in-memory database: " + err.Error())
+		os.Exit(1)
+	}
 
 	// Register the handlers
-	http.HandleFunc("/get", endpoints.GetHandler)
-	http.HandleFunc("/post", endpoints.PostHandler)
+	http.HandleFunc("/inmemoryget", endpoints.InMemoryGetHandler)
+	http.HandleFunc("/inmemoryset", endpoints.InMemorySetHandler)
 	http.HandleFunc("/mongofetch", endpoints.MongoHandler)
 
+	// Get the port from the environment variables
+	port := os.Getenv("PORT")
+	if port == "" {
+		// Log the error and exit the program
+		log.Println(errors.New("PORT environment variable is not set"))
+		os.Exit(1)
+	}
+
 	// Start the server
-	println("Server started at http://localhost:8080")
-	http.ListenAndServe(":8080", nil)
+	println("Server started at PORT: " + port)
+	err = http.ListenAndServe(":"+port, nil)
+	if err != nil {
+		println("Error starting the server: " + err.Error())
+		os.Exit(1)
+	}
 
 }
