@@ -2,9 +2,21 @@
 
 ## Usage
 
-### Running on Heroku
+## Running on Heroku
 
-To access the deployed application on Heroku, click [here](https://immense-anchorage-73013-52cdced819ec.herokuapp.com/).
+To access the deployed application on Heroku, you can use the provided API endpoints directly in Postman. Below are the steps to do so:
+
+1. **Open Postman**: If you haven't already, download and install Postman from [here](https://www.postman.com/downloads/).
+
+2. **Import Collection**: To access the API endpoints, you can directly use the provided Postman collection file included in the project. Follow these steps:
+
+   a. Inside the project directory, you'll find a file named `Getir-Cases.postman_collection.json`.
+
+   b. Open Postman and navigate to the "Collections" tab in the sidebar.
+
+   c. Click on the "Import" button and select the `Getir-Cases.postman_collection.json` file from the project directory.
+
+   d. Once imported, you will see the collection named "Getir Cases" in your Postman collections.
 
 ### Running Locally
 
