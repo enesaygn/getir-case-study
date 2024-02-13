@@ -71,6 +71,7 @@ The request payload of the POST endpoint includes a JSON object with the followi
     "key": "example-key",
     "value": "example-value"
 }
+```
 
 ##### Response Payload
 
