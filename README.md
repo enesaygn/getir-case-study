@@ -15,13 +15,14 @@ The request payload of the first endpoint includes a JSON object with the follow
 
 ### Sample Request Payload
 
-
+```json
 {
     "startDate": "2016-01-26",
     "endDate": "2018-02-02",
     "minCount": 2700,
     "maxCount": 3000
 }
+```
 
 ### Response Payload
 
@@ -38,7 +39,7 @@ Each object in the "records" array has the following fields:
 
 ### Sample Response Payload
 
-
+```json
 {
     "code": 0,
     "msg": "Success",
@@ -55,6 +56,7 @@ Each object in the "records" array has the following fields:
         }
     ]
 }
+```
 
 ## In-memory Endpoints
 
@@ -89,7 +91,7 @@ The request payload of the GET endpoint includes a query parameter:
 
 ### Sample Request
 
-GET http://localhost/in-memory?key=active-tabs
+GET http://localhost:8080/in-memory?key=active-tabs
 
 ##### Response Payload
 
@@ -99,8 +101,9 @@ The response payload of the GET endpoint returns a JSON object with the followin
 "value" (string): Value associated with the key.
 
 ### Sample Response Payload
-
+```json
 {
     "key": "active-tabs",
     "value": "getir"
 }
+```
