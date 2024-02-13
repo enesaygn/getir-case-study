@@ -54,7 +54,7 @@ Each object in the "records" array has the following fields:
     ]
 }
 
-### In-memory Endpoints
+#### In-memory Endpoints
 
 #### POST Endpoint
 
@@ -66,7 +66,7 @@ The request payload of the POST endpoint includes a JSON object with the followi
 "value" (string): Value associated with the key.
 
 ### Sample Request Payload
-
+```json
 {
     "key": "example-key",
     "value": "example-value"
