@@ -24,6 +24,29 @@ To run the application on your local machine, follow these steps (applicable for
 
 4. Access the application by visiting `http://localhost:8080` in your browser or using an HTTP client.
 
+### Local Debugging with VS Code
+
+If you want to run and debug your application locally using VS Code, you can configure your launch settings as follows:
+
+1. Open the `.vscode/launch.json` file in your VS Code project.
+
+2. Add a new configuration object inside the `configurations` array, like this:
+
+```json
+{
+    "name": "Launch Package",
+    "type": "go",
+    "request": "launch",
+    "mode": "auto",
+    "program": "${workspaceFolder}",
+    "env": {
+        "PORT": "8080"
+    }
+}
+```
+
+3. Now you can debugging.
+
 ### Testing
 
 To run tests for the application, follow these steps:
