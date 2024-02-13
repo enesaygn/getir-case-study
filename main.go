@@ -6,8 +6,6 @@ import (
 	"log"
 	"net/http"
 	"os"
-
-	"github.com/pkg/errors"
 )
 
 func main() {
@@ -28,7 +26,7 @@ func main() {
 	port := os.Getenv("PORT")
 	if port == "" {
 		// Log the error and exit the program
-		log.Println(errors.New("PORT environment variable is not set"))
+		log.Println("PORT environment variable not set")
 		os.Exit(1)
 	}
 
