@@ -2,9 +2,7 @@
 
 ## Fetch Data from MongoDB
 
-### Request
-
-#### Payload
+### Request Payload
 
 The request payload of the first endpoint includes a JSON object with the following fields:
 
@@ -61,16 +59,16 @@ Each object in the "records" array has the following fields:
 
 ## In-memory Endpoints
 
-#### POST Endpoint
+### POST Endpoint
 
-##### Request Payload
+#### Request Payload
 
 The request payload of the POST endpoint includes a JSON object with the following fields:
 
 - `"key"` (string): Key value.
 - `"value"` (string): Value associated with the key.
 
-### Sample Request Payload
+#### Sample Request Payload
 ```json
 {
     "key": "example-key",
@@ -82,26 +80,26 @@ The request payload of the POST endpoint includes a JSON object with the followi
 
 The response payload of the POST endpoint returns an echo of the request or an error (if any).
 
-#### GET Endpoint
+### GET Endpoint
 
-##### Request Payload
+#### Request Payload
 
 The request payload of the GET endpoint includes a query parameter:
 
 - `"key"` (string): Key value.
 
-### Sample Request
+#### Sample Request
 
 GET http://localhost:8080/in-memory?key=active-tabs
 
-##### Response Payload
+#### Response Payload
 
 The response payload of the GET endpoint returns a JSON object with the following fields:
 
 - `"key"` (string): Key value.
 - `"value"` (string): Value associated with the key.
 
-### Sample Response Payload
+#### Sample Response Payload
 ```json
 {
     "key": "active-tabs",
